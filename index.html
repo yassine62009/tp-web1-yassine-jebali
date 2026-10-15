@@ -1,11 +1,271 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta name="description" content="Ma première page web : une présentation et mes activités préférées.">
+  <title>Ma première page | Accueil</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f6f1;
+      --ink: #1e302f;
+      --muted: #5b6a65;
+      --green: #176a55;
+      --coral: #d85e43;
+      --line: #d6ddd5;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--coral);
+      outline-offset: 4px;
+    }
+
+    .site-header,
+    main,
+    .site-footer {
+      width: min(100% - 3rem, 62rem);
+      margin-inline: auto;
+    }
+
+    .site-header {
+      min-height: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      color: var(--green);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
+
+    .intro {
+      padding-block: clamp(4rem, 11vw, 8rem);
+      max-width: 48rem;
+    }
+
+    .eyebrow,
+    .section-number {
+      color: var(--coral);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      line-height: 1.12;
+    }
+
+    h1 {
+      max-width: 12ch;
+      margin-bottom: 1rem;
+      font-size: clamp(3rem, 8vw, 5.8rem);
+    }
+
+    .lead {
+      max-width: 38rem;
+      margin-bottom: 2rem;
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+
+    .button-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.8rem 1.1rem;
+      background: var(--green);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background-color 160ms ease;
+    }
+
+    .button-link:hover {
+      background: #105442;
+    }
+
+    .content-section {
+      display: grid;
+      grid-template-columns: minmax(9rem, 0.7fr) 2fr;
+      gap: 2rem;
+      padding-block: 2.5rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .content-section h2 {
+      margin-bottom: 0.85rem;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+    }
+
+    .content-section p {
+      max-width: 40rem;
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .activity-list {
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--line);
+      counter-reset: activity;
+      list-style: none;
+    }
+
+    .activity-list li {
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      align-items: center;
+      gap: 0.75rem;
+      min-height: 4.25rem;
+      border-bottom: 1px solid var(--line);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.3rem;
+      counter-increment: activity;
+    }
+
+    .activity-list li::before {
+      color: var(--coral);
+      content: "0" counter(activity);
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .site-footer {
+      margin-top: 2rem;
+      padding-block: 1.5rem 2rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 38rem) {
+      .site-header,
+      main,
+      .site-footer {
+        width: min(100% - 2rem, 62rem);
+      }
+
+      .site-header {
+        min-height: 4.5rem;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.35rem;
+      }
+
+      nav {
+        gap: 1rem;
+      }
+
+      .content-section {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        padding-block: 2rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
-  
+  <header class="site-header">
+    <a class="brand" href="#accueil">Ma première page</a>
+    <nav aria-label="Navigation principale">
+      <a href="#presentation">Présentation</a>
+      <a href="#activites">Activités</a>
+    </nav>
+  </header>
+
+  <main id="accueil">
+    <section class="intro" aria-labelledby="titre-principal">
+      <p class="eyebrow">TP 1 · Ma page web</p>
+      <h1 id="titre-principal">Bienvenue sur ma page</h1>
+      <p class="lead">Voici ma première page web, réalisée pour apprendre à structurer du contenu en HTML.</p>
+      <a class="button-link" href="#activites">Mes activités <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <section class="content-section" id="presentation" aria-labelledby="titre-presentation">
+      <p class="section-number">01 / Présentation</p>
+      <div>
+        <h2 id="titre-presentation">Une première étape</h2>
+        <p>Cette page rassemble quelques informations et me permet de pratiquer les bases du HTML : les titres, les paragraphes, les liens et les listes.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="activites" aria-labelledby="titre-activites">
+      <p class="section-number">02 / Loisirs</p>
+      <div>
+        <h2 id="titre-activites">Mes activités préférées</h2>
+        <ul class="activity-list">
+          <li>Lire</li>
+          <li>Écouter de la musique</li>
+          <li>Découvrir de nouvelles choses</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Merci de visiter cette page. Bonne journée !</p>
+  </footer>
 </body>
 </html>
